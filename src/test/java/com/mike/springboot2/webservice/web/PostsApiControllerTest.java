@@ -2,8 +2,10 @@ package com.mike.springboot2.webservice.web;
 
 import com.mike.springboot2.webservice.domain.posts.Posts;
 import com.mike.springboot2.webservice.domain.posts.PostsRepository;
+import com.mike.springboot2.webservice.web.dto.PostsResponseDto;
 import com.mike.springboot2.webservice.web.dto.PostsSaveRequestDto;
 import com.mike.springboot2.webservice.web.dto.PostsUpdateRequestDto;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,7 +19,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -103,5 +109,35 @@ public class PostsApiControllerTest {
         Posts posts = postsList.get(0);
         assertEquals(posts.getPost_title(), expectedPostTitle);
         assertEquals(posts.getPost_content(), expectedPostContent);
+    }
+
+    @Test
+    public void Posts_조회된다() throws URISyntaxException {
+        //given
+        String post_title = "title";
+        String post_conent = "content";
+        String post_author = "author";
+
+        Posts posts = postsRepository.save(Posts.builder()
+                .post_title(post_title)
+                .post_content(post_conent)
+                .post_author(post_author)
+                .build());
+
+        Long postId = posts.getPost_id();
+
+        String url = "http://localhost:" + randomPort + "/api/v1/posts/" + postId;
+        URI uri = new URI(url);
+
+        //when
+        ResponseEntity<PostsResponseDto> responseEntity = testRestTemplate.getForEntity(uri, PostsResponseDto.class);
+
+        //then
+        assertEquals(responseEntity.getStatusCode(), HttpStatus.OK);
+        assertTrue(responseEntity.getBody().getPost_id() > 0L);
+        assertEquals(responseEntity.getBody().getPost_title(), post_title);
+        assertEquals(responseEntity.getBody().getPost_content(), post_conent);
+        assertEquals(responseEntity.getBody().getPost_author(), post_author);
+
     }
 }
