@@ -1,5 +1,6 @@
 package com.mike.springboot2.webservice.web;
 
+import com.mike.springboot2.webservice.domain.posts.Posts;
 import com.mike.springboot2.webservice.service.posts.PostsService;
 import com.mike.springboot2.webservice.web.dto.PostsResponseDto;
 import com.mike.springboot2.webservice.web.dto.PostsSaveRequestDto;
@@ -28,4 +29,9 @@ public class PostsApiController {
         return postsService.findById(post_id);
     }
 
+    @DeleteMapping("/api/v1/posts/{post_id}")
+    public Long delete(@PathVariable Long post_id) {
+        postsService.delete(post_id);
+        return post_id;
+    }
 }
