@@ -1,6 +1,5 @@
 package com.mike.springboot2.webservice.domain.posts;
 
-import javafx.geometry.Pos;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
