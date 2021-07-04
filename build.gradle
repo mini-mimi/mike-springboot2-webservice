@@ -30,6 +30,9 @@ dependencies {
     //spring session jdbc
     implementation('org.springframework.session:spring-session-jdbc')
 
+    //mariadb driver
+    implementation('org.mariadb.jdbc:mariadb-java-client')
+
     //mustache
     implementation('org.springframework.boot:spring-boot-starter-mustache')
 
