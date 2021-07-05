@@ -35,17 +35,17 @@ deploy:
     local_dir: deploy
     wait-until-deploy: true
 
-#  - provider: codedeploy
-#    ccess_key_id: $AWS_ACCESS_KEY
-#    secret_access_key: $AWS_SECRET_KEY
-#
-#    bucket: mike-springboot2-build
-#    key: mike-springboot2-webservice.zip
-#
-#    bundle-type: zip
-#    application: mike-springboot2-webservice
-#
-#    deployment-group: mike-springboot2-webservice-group
-#    region: ap-southeast-1
-#    wait-until-deploy: true
+  - provider: codedeploy
+    ccess_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+
+    bucket: mike-springboot2-build
+    key: mike-springboot2-webservice.zip
+
+    bundle-type: zip
+    application: mike-springboot2-webservice
+
+    deployment-group: mike-springboot2-webservice-group
+    region: ap-southeast-1
+    wait-until-deploy: true
 
