@@ -18,3 +18,19 @@ notifications:
   email:
     recipients:
       - oppaakademi4631@gmail.com
+
+before_deploy:
+  - zip -r mike-springboot2-webserivce
+  - mkdir -p deploy
+  - mv mike-springboot2-webservice.zip deploy/mike-springboot2-webserivce.zip
+
+deploy:
+  - provider: s3
+    access_key_id: AKIAZV73HMUF6KEOCDM5
+    secret_access_key: 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
+    bucket: mike-sprinboot2-build
+    region: ap-southeast-1
+    skip_cleanup: true
+    acl: private
+    local_dir: deploy
+    wait-until-deploy: true
