@@ -28,7 +28,7 @@ deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
-    bucket: mike-sprinboot2-build
+    bucket: mike-springboot2-build
     region: ap-southeast-1
     skip_cleanup: true
     acl: private
