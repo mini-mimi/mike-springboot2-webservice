@@ -13,8 +13,8 @@ import java.util.UUID;
 @Entity
 public class Users extends BaseTimeEntity {
     @Id
-    @GeneratedValue
-    private UUID users_uuid;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long users_uuid;
 
     @Column(nullable = false)
     private String users_name;
