@@ -20,7 +20,7 @@ notifications:
       - oppaakademi4631@gmail.com
 
 before_deploy:
-  - zip -r mike-springboot2-webserivce
+  - zip -r mike-springboot2-webserivce *
   - mkdir -p deploy
   - mv mike-springboot2-webservice.zip deploy/mike-springboot2-webserivce.zip
 
