@@ -34,3 +34,18 @@ deploy:
     acl: private
     local_dir: deploy
     wait-until-deploy: true
+
+  - provider: codedeploy
+    access_key_id: AKIAZV73HMUF6KEOCDM5
+    secret_access_key: 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
+
+    bucket: mike-springboot2-build
+    key: mike-springboot2-webservice.zip
+
+    bundle-type: zip
+    application: mike-springboot2-webservice
+
+    deployment-group: mike-springboot2-webservice-group
+    region: ap-southeast-1
+    wait-until-deploy: true
+
