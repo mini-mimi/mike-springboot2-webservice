@@ -26,8 +26,8 @@ before_deploy:
 
 deploy:
   - provider: s3
-    access_key_id: AKIAZV73HMUF6KEOCDM5
-    secret_access_key: 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
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
     bucket: mike-sprinboot2-build
     region: ap-southeast-1
     skip_cleanup: true
@@ -36,8 +36,8 @@ deploy:
     wait-until-deploy: true
 
 #  - provider: codedeploy
-#    access_key_id: AKIAZV73HMUF6KEOCDM5
-#    secret_access_key: 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
+#    ccess_key_id: $AWS_ACCESS_KEY
+#    secret_access_key: $AWS_SECRET_KEY
 #
 #    bucket: mike-springboot2-build
 #    key: mike-springboot2-webservice.zip
